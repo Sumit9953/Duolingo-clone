@@ -1,4 +1,4 @@
-export default [
+export default  [
   {
     question: 'Which of these is "the glass"?',
     options: [
@@ -6,26 +6,26 @@ export default [
         id: "option1",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/cup.png",
-        text: "la taza",
+        text: "Cup",
       },
       {
         id: "option2",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/glass.png",
-        text: "el vaso",
+        text: "Glass",
         correct: true,
       },
       {
         id: "option3",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/milk.png",
-        text: "la leche",
+        text: "Milk",
       },
       {
         id: "option4",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/coffee.png",
-        text: "el café",
+        text: "Coffee",
       },
     ],
   },
@@ -36,26 +36,26 @@ export default [
         id: "option4",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/coffee.png",
-        text: "el café",
+        text: "Coffee",
         correct: true,
       },
       {
         id: "option1",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/cup.png",
-        text: "la taza",
+        text: "Cup",
       },
       {
         id: "option3",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/milk.png",
-        text: "la leche",
+        text: "Milk",
       },
       {
         id: "option2",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/glass.png",
-        text: "el vaso",
+        text: "Glass",
       },
     ],
   },
@@ -66,25 +66,25 @@ export default [
         id: "option3",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/milk.png",
-        text: "la leche",
+        text: "Milk",
       },
       {
         id: "option2",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/glass.png",
-        text: "el vaso",
+        text: "Glass",
       },
       {
         id: "option4",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/coffee.png",
-        text: "el café",
+        text: "Coffee",
       },
       {
         id: "option1",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/cup.png",
-        text: "la taza",
+        text: "Cup",
         correct: true,
       },
     ],
@@ -96,27 +96,28 @@ export default [
         id: "option2",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/glass.png",
-        text: "el vaso",
+        text: "Glass",
       },
       {
         id: "option3",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/milk.png",
-        text: "la leche",
+        text: "Milk",
         correct: true,
       },
       {
         id: "option1",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/cup.png",
-        text: "la taza",
+        text: "Cup",
       },
       {
         id: "option4",
         image:
           "https://fsmd-assets.s3.eu-west-1.amazonaws.com/duolingo/images/coffee.png",
-        text: "el café",
+        text: "Coffee",
       },
     ],
   },
 ];
+
