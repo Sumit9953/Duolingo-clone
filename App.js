@@ -1,45 +1,47 @@
-import React , {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { Alert, Text, View } from "react-native";
 import styles from "./App.styles";
 import questions from "./assets/data/imageMulatipleChoiceQuestions";
 import Button from "./src/components/Button";
+import ImageMulatipleChoiceQuestions from "./src/components/ImageMultipleChoiceQuestion/";
 import ImageOption from "./src/components/ImageOption/";
+import OpenEndedQuestion from "./src/components/OpenEndedQuestion/";
 
 const App = () => {
-  const [selected, setSelected] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState(questions[currentQuestionIndex])
+  const [currentQuestion, setCurrentQuestion] = useState(
+    questions[currentQuestionIndex]
+  );
 
-  const onButtonPress = () => {
-    if(selected.correct){
-    Alert.alert("Correct!");
-    const nextIndex =  currentQuestionIndex + 1;
-    console.log(currentQuestionIndex);
-    setCurrentQuestionIndex(nextIndex);
-    console.log(nextIndex);
-    setCurrentQuestion(questions[nextIndex]);
-    }else{
-      Alert.alert("Incorrect!")
+  useEffect(() => {
+    if (currentQuestionIndex >= questions.length) {
+      Alert.alert("You won");
+      setCurrentQuestionIndex(0);
+    } else {
+      setCurrentQuestion(questions[currentQuestionIndex]);
     }
-  }
+  }, [currentQuestionIndex]);
+
+  const onCorrect = () => {
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  };
+
+  const onIncorrect = () => {
+    Alert.alert("Incorrect!");
+  };
 
   return (
     <View style={styles.root}>
-      <Text style={styles.title}>{currentQuestion.question}</Text>
-
-      <View style={styles.optionsContainer}>
-       {currentQuestion.options.map((option) => (
-          <ImageOption
-          key={option.id}
-          image={option.image}
-          text={option.text}
-          isSelected = {selected ?.id === option.id}
-          OnPress = {() => setSelected(option)}
-        />
-      ))}
-      </View>
-      <Button text = "Check" OnPress={onButtonPress} disabled={!selected} />
-    </View> 
+      {/* <ImageMulatipleChoiceQuestions
+        question={currentQuestion}
+        onCorrect={onCorrect}
+        onIncorrect={onIncorrect}
+      /> */}
+      <OpenEndedQuestion
+      question={currentQuestion}
+        onCorrect={onCorrect}
+        onIncorrect={onIncorrect} />
+    </View>
   );
 };
 
