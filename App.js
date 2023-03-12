@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Alert, Text, View } from "react-native";
 import styles from "./App.styles";
-import questions from "./assets/data/imageMulatipleChoiceQuestions";
+// import questions from "./assets/data/imageMulatipleChoiceQuestions";
 import Button from "./src/components/Button";
 import ImageMulatipleChoiceQuestions from "./src/components/ImageMultipleChoiceQuestion/";
 import ImageOption from "./src/components/ImageOption/";
 import OpenEndedQuestion from "./src/components/OpenEndedQuestion/";
+
+// import questions from "./assets/data/openEndedQuestions"
+import questions from "./assets/data/allQuestions";
 
 const App = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -32,15 +35,19 @@ const App = () => {
 
   return (
     <View style={styles.root}>
-      {/* <ImageMulatipleChoiceQuestions
+      {currentQuestion.type === "IMAGE_MULTIPLE_CHOICE" ? (
+        <ImageMulatipleChoiceQuestions
+          question={currentQuestion}
+          onCorrect={onCorrect}
+          onIncorrect={onIncorrect}
+        />
+      ) : null}
+      {currentQuestion.type === "OPEN_ENDED" ? (
+      <OpenEndedQuestion
         question={currentQuestion}
         onCorrect={onCorrect}
         onIncorrect={onIncorrect}
-      /> */}
-      <OpenEndedQuestion
-      question={currentQuestion}
-        onCorrect={onCorrect}
-        onIncorrect={onIncorrect} />
+      /> ): null}
     </View>
   );
 };
