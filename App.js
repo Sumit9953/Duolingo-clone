@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Alert, Text, View } from "react-native";
 import styles from "./App.styles";
-// import questions from "./assets/data/imageMulatipleChoiceQuestions";
-import Button from "./src/components/Button";
 import ImageMulatipleChoiceQuestions from "./src/components/ImageMultipleChoiceQuestion/";
-import ImageOption from "./src/components/ImageOption/";
 import OpenEndedQuestion from "./src/components/OpenEndedQuestion/";
+import Header from "./src/components/Header";
 
-// import questions from "./assets/data/openEndedQuestions"
 import questions from "./assets/data/allQuestions";
 
 const App = () => {
@@ -15,6 +12,8 @@ const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(
     questions[currentQuestionIndex]
   );
+
+  const [lives, setLives] = useState(5);
 
   useEffect(() => {
     if (currentQuestionIndex >= questions.length) {
@@ -29,12 +28,29 @@ const App = () => {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
+  const restart = () => {
+    setLives(5);
+    setCurrentQuestionIndex(0);
+  }
+
   const onIncorrect = () => {
-    Alert.alert("Incorrect!");
+    if(lives <= 1){
+      Alert.alert("Game Over" , "Try again" , [{
+        text: 'Try again',
+        onPress: restart,
+      }]);
+    }else{
+      Alert.alert("Incorrect!");
+      setLives(lives - 1);
+    }
   };
 
   return (
     <View style={styles.root}>
+      <Header
+        progress={currentQuestionIndex / questions.length}
+        lives={lives}
+      />
       {currentQuestion.type === "IMAGE_MULTIPLE_CHOICE" ? (
         <ImageMulatipleChoiceQuestions
           question={currentQuestion}
@@ -43,11 +59,12 @@ const App = () => {
         />
       ) : null}
       {currentQuestion.type === "OPEN_ENDED" ? (
-      <OpenEndedQuestion
-        question={currentQuestion}
-        onCorrect={onCorrect}
-        onIncorrect={onIncorrect}
-      /> ): null}
+        <OpenEndedQuestion
+          question={currentQuestion}
+          onCorrect={onCorrect}
+          onIncorrect={onIncorrect}
+        />
+      ) : null}
     </View>
   );
 };
